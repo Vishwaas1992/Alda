@@ -1,0 +1,47 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+
+Model:
+	(tempo+=Tempo)*
+	(quants+=Quant)*
+	(cello+=Cello)*
+	(def+=DEF)*
+	;
+	
+terminal NUM:
+	('0'..'9')*;
+
+
+@Override 
+terminal ML_COMMENT:
+	('#'->'\n')|("\""->"\"");
+
+terminal NOTES:
+	('a'|'b'|'c'|'d'|'e'|'f'|'g')('+')?('-')?('.')?('0'..'9')?('~')?('<')?('>')?(' ')
+;
+
+
+terminal DEFINITIONS:
+	('a'..'z'|'A'..'Z')*('0'..'9')*('-')?('a'..'z'|'A'..'Z'|'0'..'9')*(' ')('0'..'9')*
+	
+	;
+Tempo:
+	'(tempo!' name=NUM ')';
+Quant:
+	'(quant!' name=NUM ')';
+	
+Volume:
+	'(volume!' name=NUM ')';
+
+Octave:
+	'(octave!' name=NUM ')';
+
+Cello:
+	'cello:' name=NOTES;
+	
+DEF:
+	'(def' name=DEFINITIONS ')'
+;
+
