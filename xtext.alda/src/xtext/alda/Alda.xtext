@@ -1,47 +1,30 @@
-grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+grammar org.xtext.alda.Alda with org.eclipse.xtext.common.Terminals
 
-generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
-
+generate alda "http://www.xtext.org/alda/Alda"
 
 Model:
-	(tempo+=Tempo)*
-	(quants+=Quant)*
-	(cello+=Cello)*
-	(def+=DEF)*
-	;
-	
-terminal NUM:
-	('0'..'9')*;
-
-
-@Override 
-terminal ML_COMMENT:
-	('#'->'\n')|("\""->"\"");
-
-terminal NOTES:
-	('a'|'b'|'c'|'d'|'e'|'f'|'g')('+')?('-')?('.')?('0'..'9')?('~')?('<')?('>')?(' ')
-;
-
-
-terminal DEFINITIONS:
-	('a'..'z'|'A'..'Z')*('0'..'9')*('-')?('a'..'z'|'A'..'Z'|'0'..'9')*(' ')('0'..'9')*
-	
-	;
+	tempo+=Tempo*
+	quant+=Quant*
+	volume+=Volume*
+	keySignature+=KeySignature*;
+	 
 Tempo:
-	'(tempo!' name=NUM ')';
+	'(''tempo' '!'? name=INT ')'
+	;
+	
 Quant:
-	'(quant!' name=NUM ')';
+	'(''quant' '!'? name=INT ')'
+	;
 	
 Volume:
-	'(volume!' name=NUM ')';
+	'(''volume' '!'? name=INT ')'
+	;
 
-Octave:
-	'(octave!' name=NUM ')';
-
-Cello:
-	'cello:' name=NOTES;
+KeySignature:
+	'(''key-signature' '!'? name=NOTES ')'
 	
-DEF:
-	'(def' name=DEFINITIONS ')'
 ;
 
+terminal NOTES:
+	('a'|'b'|'c'|'d'|'e'|'f'|'g')(' '('a'|'b'|'c'|'d'|'e'|'f'|'g'))*
+;
