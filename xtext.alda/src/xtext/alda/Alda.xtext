@@ -2,15 +2,13 @@ grammar org.xtext.alda.Alda with org.eclipse.xtext.common.Terminals
 generate alda "http://www.xtext.org/alda/Alda"
 
 Model:
-	tempo+=Tempo*
-	quant+=Quant*
-	volume+=Volume*
-	keySignature+=KeySignature
-	violin+=Violin*
-	flute+=Flute*
-	comment+=COMMENT*
+	(declarations+=DECLRATIONS)*
+	(instruments+=INSTRUMENTS)*
 	;
 	
+DECLRATIONS:
+	Tempo|Quant	|Volume|KeySignature|COMMENT
+;
 COMMENT:
 	'(''comment' name=STRING ')'
 ;
@@ -18,6 +16,14 @@ COMMENT:
 @Override 
 terminal ML_COMMENT:
 	'#'->'\n'
+;
+
+INSTRUMENTS:
+	Violin|Flute|Piano
+;
+
+Piano:
+	'piano'':' '\n'* name=NOTES
 ;
 Violin:
 	'violin'':' '\n'* name=NOTES
@@ -43,5 +49,5 @@ KeySignature:
 ;
 
 terminal NOTES:
-	('a'|'b'|'c'|'d'|'e'|'f'|'g')('1'..'9')*('<')*('>')*('-')*(' '('a'|'b'|'c'|'d'|'e'|'f'|'g')('1'..'9')*('<')*('>')*('-')*)*
+	('o'|'r')('a'|'b'|'c'|'d'|'e'|'f'|'g')('-'|'+')?('1'..'9')*(' '|'|'|'*'|'<'|'>'|'-')*(('a'|'b'|'c'|'d'|'e'|'f'|'g')('-')?('1'..'9')*(' '|'|'|'*'|'<'|'>'|'-')*)*
 ;
