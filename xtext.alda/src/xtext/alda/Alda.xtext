@@ -1,13 +1,30 @@
 grammar org.xtext.alda.Alda with org.eclipse.xtext.common.Terminals
-
 generate alda "http://www.xtext.org/alda/Alda"
 
 Model:
 	tempo+=Tempo*
 	quant+=Quant*
 	volume+=Volume*
-	keySignature+=KeySignature*;
-	 
+	keySignature+=KeySignature
+	violin+=Violin*
+	flute+=Flute*
+	comment+=COMMENT*
+	;
+	
+COMMENT:
+	'(''comment' name=STRING ')'
+;
+
+@Override 
+terminal ML_COMMENT:
+	'#'->'\n'
+;
+Violin:
+	'violin'':' '\n'* name=NOTES
+;
+Flute:
+	'flute'':' '\n'* name=NOTES
+;	 
 Tempo:
 	'(''tempo' '!'? name=INT ')'
 	;
