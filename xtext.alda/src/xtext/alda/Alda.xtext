@@ -1,5 +1,6 @@
-grammar org.xtext.alda.Alda with org.eclipse.xtext.common.Terminals
-generate alda "http://www.xtext.org/alda/Alda"
+grammar org.xtext.editor.alda.Alda with org.eclipse.xtext.common.Terminals
+
+generate alda "http://www.xtext.org/editor/alda/Alda"
 
 Model:
 	(declarations+=DECLRATIONS)*
@@ -49,5 +50,5 @@ KeySignature:
 ;
 
 terminal NOTES:
-	('o'|'r')('a'|'b'|'c'|'d'|'e'|'f'|'g')('-'|'+')?('1'..'9')*(' '|'|'|'*'|'<'|'>'|'-')*(('a'|'b'|'c'|'d'|'e'|'f'|'g')('-')?('1'..'9')*(' '|'|'|'*'|'<'|'>'|'-')*)*
+	(('o'|'r')('1'..'9')*' ')?('a'|'b'|'c'|'d'|'e'|'f'|'g')('-'|'+')?('1'..'9')*('~'|'/'|'.'|' '|'|'|'*'|'<'|'>'|'-'|(('.~')('1'..'9')))*((('o'|'r')('1'..'9')*' ')?('a'|'b'|'c'|'d'|'e'|'f'|'g')('-')?('1'..'9')*('~'|'/'|'.'|' '|'|'|'*'|'<'|'>'|'-'|(('.~')('1'..'9')))*)*
 ;
