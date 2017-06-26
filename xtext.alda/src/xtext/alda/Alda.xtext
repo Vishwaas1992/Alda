@@ -3,52 +3,47 @@ grammar org.xtext.editor.alda.Alda with org.eclipse.xtext.common.Terminals
 generate alda "http://www.xtext.org/editor/alda/Alda"
 
 Model:
-	(declarations+=DECLRATIONS)*
-	(instruments+=INSTRUMENTS)*
-	;
-	
+    (declarations+=DECLRATIONS)*
+    (instruments+=INSTRUMENTS)*
+    ;
+    
 DECLRATIONS:
-	Tempo|Quant	|Volume|KeySignature|COMMENT
+    Tempo|Quant |Volume|KeySignature|COMMENT
 ;
 COMMENT:
-	'(''comment' name=STRING ')'
+    '(''comment' name=STRING ')'
 ;
 
-@Override 
 terminal ML_COMMENT:
-	'#'->'\n'
+    '#'->'\n'
 ;
+
 
 INSTRUMENTS:
-	Violin|Flute|Piano
+    INSTRUMENT('/'INSTRUMENT)*':' '\n'* name=NOTES
 ;
 
-Piano:
-	'piano'':' '\n'* name=NOTES
+INSTRUMENT:
+    'piano'|'violin'|'flute'
 ;
-Violin:
-	'violin'':' '\n'* name=NOTES
-;
-Flute:
-	'flute'':' '\n'* name=NOTES
-;	 
+
 Tempo:
-	'(''tempo' '!'? name=INT ')'
-	;
-	
+    '(''tempo' '!'? name=INT ')'
+    ;
+    
 Quant:
-	'(''quant' '!'? name=INT ')'
-	;
-	
+    '(''quant' '!'? name=INT ')'
+    ;
+    
 Volume:
-	'(''volume' '!'? name=INT ')'
-	;
+    '(''volume' '!'? name=INT ')'
+    ;
 
 KeySignature:
-	'(''key-signature' '!'? name=NOTES ')'
-	
+    '(''key-signature' '!'? name=NOTES ')'
+    
 ;
 
 terminal NOTES:
-	(('o'|'r')('1'..'9')*' ')?('a'|'b'|'c'|'d'|'e'|'f'|'g')('-'|'+')?('1'..'9')*('~'|'/'|'.'|' '|'|'|'*'|'<'|'>'|'-'|(('.~')('1'..'9')))*((('o'|'r')('1'..'9')*' ')?('a'|'b'|'c'|'d'|'e'|'f'|'g')('-')?('1'..'9')*('~'|'/'|'.'|' '|'|'|'*'|'<'|'>'|'-'|(('.~')('1'..'9')))*)*
+    (('o'|'r')('1'..'9')*' ')?('a'|'b'|'c'|'d'|'e'|'f'|'g')('-'|'+')?('1'..'9')*('~'|'/'|'.'|' '|'|'|'*'|'<'|'>'|'-'|(('.~')('1'..'9')))*((('o'|'r')('1'..'9')*' ')?('a'|'b'|'c'|'d'|'e'|'f'|'g')('-'|'+')?('1'..'9')*('~'|'/'|'.'|' '|'|'|'*'|'<'|'>'|'-'|(('.~')('1'..'9')))*)*
 ;
