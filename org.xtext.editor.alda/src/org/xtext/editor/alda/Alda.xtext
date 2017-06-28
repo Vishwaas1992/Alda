@@ -1,0 +1,49 @@
+grammar org.xtext.editor.alda.Alda with org.eclipse.xtext.common.Terminals
+
+generate alda "http://www.xtext.org/editor/alda/Alda"
+
+Model:
+    (declarations+=DECLRATIONS)*
+    (instruments+=INSTRUMENTS)*
+    ;
+    
+DECLRATIONS:
+    Tempo|Quant |Volume|KeySignature|COMMENT
+;
+COMMENT:
+    '(''comment' name=STRING ')'
+;
+
+terminal ML_COMMENT:
+    '#'->'\n'
+;
+
+
+INSTRUMENTS:
+    INSTRUMENT('/'INSTRUMENT)*':' '\n'* name=NOTES
+;
+
+INSTRUMENT:
+    'piano'|'violin'|'flute'
+;
+
+Tempo:
+    '(''tempo' '!'? name=INT ')'
+    ;
+    
+Quant:
+    '(''quant' '!'? name=INT ')'
+    ;
+    
+Volume:
+    '(''volume' '!'? name=INT ')'
+    ;
+
+KeySignature:
+    '(''key-signature' '!'? name=NOTES ')'
+    
+;
+
+terminal NOTES:
+    (('o'|'r')('1'..'9')*' ')?('a'|'b'|'c'|'d'|'e'|'f'|'g')('-'|'+')?('1'..'9')*('~'|'/'|'.'|' '|'|'|'*'|'<'|'>'|'-'|(('.~')('1'..'9')))*((('o'|'r')('1'..'9')*' ')?('a'|'b'|'c'|'d'|'e'|'f'|'g')('-'|'+')?('1'..'9')*('~'|'/'|'.'|' '|'|'|'*'|'<'|'>'|'-'|(('.~')('1'..'9')))*)*
+;
