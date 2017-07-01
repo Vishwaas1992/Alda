@@ -3,12 +3,8 @@
  */
 package org.xtext.editor.alda.ide;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import org.eclipse.xtext.util.Modules2;
-import org.xtext.editor.alda.AldaRuntimeModule;
 import org.xtext.editor.alda.AldaStandaloneSetup;
-import org.xtext.editor.alda.ide.AldaIdeModule;
 
 /**
  * Initialization support for running Xtext languages as language servers.
@@ -17,8 +13,7 @@ import org.xtext.editor.alda.ide.AldaIdeModule;
 public class AldaIdeSetup extends AldaStandaloneSetup {
   @Override
   public Injector createInjector() {
-    AldaRuntimeModule _aldaRuntimeModule = new AldaRuntimeModule();
-    AldaIdeModule _aldaIdeModule = new AldaIdeModule();
-    return Guice.createInjector(Modules2.mixin(_aldaRuntimeModule, _aldaIdeModule));
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from AldaIdeModule to Module");
   }
 }

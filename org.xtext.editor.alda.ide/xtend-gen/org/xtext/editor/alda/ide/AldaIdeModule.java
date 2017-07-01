@@ -3,11 +3,9 @@
  */
 package org.xtext.editor.alda.ide;
 
-import org.xtext.editor.alda.ide.AbstractAldaIdeModule;
-
 /**
  * Use this class to register ide components.
  */
 @SuppressWarnings("all")
-public class AldaIdeModule extends AbstractAldaIdeModule {
+public class AldaIdeModule /* implements AbstractAldaIdeModule  */{
 }

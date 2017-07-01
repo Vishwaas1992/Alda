@@ -722,7 +722,7 @@ public class InternalAldaParser extends AbstractInternalAntlrParser {
             	    {
             	    otherlv_4=(Token)match(input,17,FOLLOW_10); 
 
-            	    				newLeafNode(otherlv_4, grammarAccess.getINSTRUMENTSAccess().getLineFeedKeyword_3());
+            	    				newLeafNode(otherlv_4, grammarAccess.getINSTRUMENTSAccess().getControl000aKeyword_3());
             	    			
 
             	    }

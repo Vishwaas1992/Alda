@@ -1850,7 +1850,7 @@ public class InternalAldaParser extends AbstractInternalContentAssistParser {
             // InternalAlda.g:603:1: ( ( '\\n' )* )
             // InternalAlda.g:604:2: ( '\\n' )*
             {
-             before(grammarAccess.getINSTRUMENTSAccess().getLineFeedKeyword_3()); 
+             before(grammarAccess.getINSTRUMENTSAccess().getControl000aKeyword_3()); 
             // InternalAlda.g:605:2: ( '\\n' )*
             loop6:
             do {
@@ -1876,7 +1876,7 @@ public class InternalAldaParser extends AbstractInternalContentAssistParser {
                 }
             } while (true);
 
-             after(grammarAccess.getINSTRUMENTSAccess().getLineFeedKeyword_3()); 
+             after(grammarAccess.getINSTRUMENTSAccess().getControl000aKeyword_3()); 
 
             }
 

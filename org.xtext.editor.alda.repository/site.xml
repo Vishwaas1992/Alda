@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.xtext.editor.alda.feature_1.0.0.201707012259.jar" id="org.xtext.editor.alda.feature" version="1.0.0.201707012259">
+      <category name="main"/>
+   </feature>
+   <category-def name="main" label="Alda"/>
+</site>

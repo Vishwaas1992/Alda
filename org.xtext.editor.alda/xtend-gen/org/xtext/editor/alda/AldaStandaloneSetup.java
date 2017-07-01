@@ -11,6 +11,7 @@ import org.xtext.editor.alda.AldaStandaloneSetupGenerated;
 @SuppressWarnings("all")
 public class AldaStandaloneSetup extends AldaStandaloneSetupGenerated {
   public static void doSetup() {
-    new AldaStandaloneSetup().createInjectorAndDoEMFRegistration();
+    AldaStandaloneSetup _aldaStandaloneSetup = new AldaStandaloneSetup();
+    _aldaStandaloneSetup.createInjectorAndDoEMFRegistration();
   }
 }
