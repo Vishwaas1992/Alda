@@ -1,5 +1,5 @@
 # Alda
-This is an eclipse editor for the music programming language [Alda](https://github.com/alda-lang)
+This is a xtext based eclipse editor for composing music using [Alda](https://github.com/alda-lang)
 
 # Disclaimer
 This is in very early stages of development
